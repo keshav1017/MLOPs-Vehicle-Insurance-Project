@@ -1,0 +1,17 @@
+1. Create project template by executing template.py file
+2. Write the code on setup.py and pyproject.toml file to import local packages
+    >> Find more about "setup.py and pyproject.toml" at crashcourse.txt
+3. Create a virtual environment, acitvate it and install the requirements from requirements.txt
+    conda create -n vehicle python=3.12 -y
+    conda activate vehicle
+    add required modules to requirements.txt
+    Do "pip install -r requirements.txt"
+4. Do a "pip list" on terminal to make sure you have local packages installed. 
+
+-------------------------------------------- MongoDB Setup ------------------------------------------------
+5. Sign up to MongoDB Atlas and create a new project by just providing it a name then next create.
+6. From "Create a cluster" screen, hit "create", Select M0 service keeping other services as default, hit "create deployement"
+7. Setup username and password then create DB user.
+8. Go to "network access" and add ip address - "0.0.0.0/0" so that we can access it from anywhere
+9. Go back to project >> "Get Connection String" >> "Drivers" >> {Driver:Python, Version:3.6 or later}
+    >> copy and save the connection string with your(replace password). >> Done

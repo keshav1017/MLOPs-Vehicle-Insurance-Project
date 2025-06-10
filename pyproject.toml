@@ -1,0 +1,11 @@
+[project]
+name="src"
+version="0.0.1"
+description="An MLOps model for productionizing models"
+authors=[{name = "Keshav Prasad", email = "prasadkeshav003@gmail.com"}]
+
+[tools.setuptools]
+packages = {find = {}}
+
+[tool.setuptools.dynamic]
+dependencies={file = "requirements.txt"}
