@@ -6,6 +6,7 @@ import certifi
 from src.exception import MyException
 from src.logger import logging
 from src.constants import DATABASE_NAME, MONGODB_URL_KEY
+logging.getLogger("pymongo").setLevel(logging.ERROR)
 
 # load the certificate authority file to avoid timeout error when connecting to MongoDB
 ca = certifi.where()
