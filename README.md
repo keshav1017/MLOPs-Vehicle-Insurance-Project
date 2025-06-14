@@ -35,6 +35,7 @@ Impress recruiters, collaborators, and visitors with a modern, scalable, and clo
 
 ## 🚀 Project Architecture
 
+```mermaid
 graph TD
     A[User] --> B(FastAPI App)
     B --> C[Prediction Pipeline]
@@ -44,6 +45,8 @@ graph TD
     B --> G["Model Training (/train)"]
     H[GitHub Actions] --> F
     I[Docker] --> H
+
+```
 
 ---
 
