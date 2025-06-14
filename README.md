@@ -35,17 +35,15 @@ Impress recruiters, collaborators, and visitors with a modern, scalable, and clo
 
 ## 🚀 Project Architecture
 
-```mermaid
 graph TD
     A[User] --> B(FastAPI App)
     B --> C[Prediction Pipeline]
     C --> D[Model Registry (S3)]
     C --> E[MongoDB Atlas]
     D --> F[EC2 Deployment]
-    B --> G[Model Training (/train)]
+    B --> G["Model Training (/train)"]
     H[GitHub Actions] --> F
     I[Docker] --> H
-```
 
 ---
 
