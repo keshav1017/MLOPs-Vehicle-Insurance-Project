@@ -37,14 +37,14 @@ Impress recruiters, collaborators, and visitors with a modern, scalable, and clo
 
 ```mermaid
 graph TD
-    A[User] -->|Web UI| B(FastAPI App)
+    A[User] --> B(FastAPI App)
     B --> C[Prediction Pipeline]
     C --> D[Model Registry (S3)]
     C --> E[MongoDB Atlas]
     D --> F[EC2 Deployment]
-    B -->|/train| C
-    G[GitHub Actions] -->|CI/CD| F
-    H[Docker] --> G
+    B --> G[Model Training (/train)]
+    H[GitHub Actions] --> F
+    I[Docker] --> H
 ```
 
 ---
