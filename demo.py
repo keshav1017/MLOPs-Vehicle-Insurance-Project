@@ -21,6 +21,7 @@
 #     raise MyException(e, sys) from e
 
 from src.pipeline.training_pipeline import TrainPipeline
+from src.pipeline.prediction_pipeline import VehicleDataClassifier
 
-pipeline = TrainPipeline()
-pipeline.run_pipeline()
+pipeline = VehicleDataClassifier()
+pipeline.get_latest_model_path()

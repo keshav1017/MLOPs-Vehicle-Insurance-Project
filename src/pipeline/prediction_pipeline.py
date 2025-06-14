@@ -1,6 +1,7 @@
 import sys
+import os
 from src.entity.config_entity import VehiclePredictConfig
-from src.entity.s3_estimator import Proj1Estimator
+from src.utils.main_utils import load_object
 from src.exception import MyException
 from src.logger import logging
 from pandas import DataFrame
@@ -85,6 +86,20 @@ class VehicleDataClassifier:
         except Exception as e:
             raise MyException(e, sys)
     
+    def get_latest_model_path(self, artifact_dir="artifact", model_subpath=os.path.join("model_trainer", "model_trainer", "model.pkl")):
+        # List all timestamped subdirectories in artifact/
+        subdirs = [os.path.join(artifact_dir, d) for d in os.listdir(artifact_dir)
+                if os.path.isdir(os.path.join(artifact_dir, d))]
+        if not subdirs:
+            raise FileNotFoundError("No timestamp folders found in artifact/")
+        # Sort by modification time, descending
+        latest_subdir = max(subdirs, key=os.path.getmtime)
+        model_path = os.path.join(latest_subdir, model_subpath)
+        # print(model_path)
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"Model file not found at {model_path}")
+        return model_path
+
     def predict(self, dataframe) -> str:
         """
         This is method of VehicleDataClassifier
@@ -92,10 +107,8 @@ class VehicleDataClassifier:
         """
         try:
             logging.info("Entered predict method of VehicleDataClassifier")
-            model = Proj1Estimator(
-                bucket_name=self.prediction_pipeline_config.model_bucket_name,
-                model_path=self.prediction_pipeline_config.model_file_path,
-            )
+            latest_model_path = self.get_latest_model_path()
+            model = load_object(latest_model_path)
             result = model.predict(dataframe)
 
             return result
