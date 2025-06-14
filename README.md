@@ -183,5 +183,3 @@ graph TD
 ---
 
 **Ready to take your ML projects to the next level? Star ⭐ this repo and get started!**
-
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/74911406/1e5ebb94-6bc7-4e69-9206-e8eefb72f596/paste.txt
