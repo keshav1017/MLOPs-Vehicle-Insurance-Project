@@ -75,29 +75,29 @@ class VehicleData:
         except Exception as e:
             raise MyException(e, sys) from e
     
-    class VehicleDataClassifier:
-        def __init__(self, prediction_pipeline_config: VehiclePredictConfig = VehiclePredictConfig(),) -> None:
-            """
-            :param prediction_pipeline_config: Configuration for prediction the value
-            """
-            try:
-                self.prediction_pipeline_config = prediction_pipeline_config
-            except Exception as e:
-                raise MyException(e, sys)
-        
-        def predict(self, dataframe) -> str:
-            """
-            This is method of VehicleDataClassifier
-            Returns: Prediction in string format
-            """
-            try:
-                logging.info("Entered predict method of VehicleDataClassifier")
-                model = Proj1Estimator(
-                    bucket_name=self.prediction_pipeline_config.model_bucket_name,
-                    model_path=self.prediction_pipeline_config.model_file_path,
-                )
-                result = model.predict(dataframe)
+class VehicleDataClassifier:
+    def __init__(self, prediction_pipeline_config: VehiclePredictConfig = VehiclePredictConfig(),) -> None:
+        """
+        :param prediction_pipeline_config: Configuration for prediction the value
+        """
+        try:
+            self.prediction_pipeline_config = prediction_pipeline_config
+        except Exception as e:
+            raise MyException(e, sys)
+    
+    def predict(self, dataframe) -> str:
+        """
+        This is method of VehicleDataClassifier
+        Returns: Prediction in string format
+        """
+        try:
+            logging.info("Entered predict method of VehicleDataClassifier")
+            model = Proj1Estimator(
+                bucket_name=self.prediction_pipeline_config.model_bucket_name,
+                model_path=self.prediction_pipeline_config.model_file_path,
+            )
+            result = model.predict(dataframe)
 
-                return result
-            except Exception as e:
-                raise MyException(e, sys)
+            return result
+        except Exception as e:
+            raise MyException(e, sys)
